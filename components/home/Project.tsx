@@ -16,15 +16,15 @@ function Project(props: ProjectProps) {
         <PreviewStatsContainer>
             <Preview src="/img/projects/personal-site-v2/preview.png" alt=""/>
             <StatsContainer>
-                {props.gitstats.map(stat => <StatsEntry>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
+                {props.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
             </StatsContainer>
         </PreviewStatsContainer>
         <TagContainer>
-            {props.tags.map(tag => <TagButton>{tag}</TagButton>)}
+            {props.tags.map(tag => <TagButton key={tag}>{tag}</TagButton>)}
         </TagContainer>
         <LanguagesContainer>
             {props.langs.map(lang =>
-                <LangWrapper>
+                <LangWrapper key={lang.name}>
                     <LangDot style={{background: lang.color}}/>
                     <LangText>{lang.name}</LangText>
                 </LangWrapper>
@@ -35,7 +35,7 @@ function Project(props: ProjectProps) {
         </Divider>
         <Divider>
             {props.social.map(entry =>
-                <SocialButton>
+                <SocialButton key={entry.name}>
                     <SocialText>{entry.name}</SocialText>
                 </SocialButton>
             )}
