@@ -1,90 +1,67 @@
 import styled from "styled-components";
-import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest } from "react-feather";
+import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest, X, XCircle } from "react-feather";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 
 interface ProjectProps {
   project: string,
-  desc: string,
-  tags: string[]
-  langs: { color: string, name: string }[]
+  user: string,
   social: { href: string, name: string }[]
-  gitstats: { icon: React.ReactNode, text: string }[]
 }
 
-function Project() {
+function Project(props: ProjectProps) {
 
   useEffect(() => {
-    Axios.get("/api/project")
+    Axios.post("/api/project", {
+      name: props.project,
+      user: props.user,
+    }).then(res => {
+      const data = res.data;
+      setData({
+        project: data.project,
+        desc: data.desc,
+        tags: data.topics,
+        langs: data.lang,
+        gitstats: [
+          {
+            icon: <GitHub />,
+            text: data.project
+          },
+          {
+            icon: <GitCommit />,
+            text: `${data.commits} Commits`
+          },
+          {
+            icon: <GitBranch/>,
+            text: `${data.forks} Forks`
+          },
+          {
+            icon: <XCircle/>,
+            text: `${data.issues} Issues`
+          }
+        ],
+        social: props.social
+      })
+    })
   }, [])
 
-  const []
+  const [data, setData] = useState(null);
 
-  const [info, setInfo] = useState({
-    project: "PERSONAL-SITE-V2",
-    desc: "This is my personal website that I built to showcase my personal projects & more, with github integration \n" +
-      "to easily show project data.",
-    tags: [
-      "NEXTJS", "REACT", "QUARK"
-    ],
-    langs: [
-      {
-        color: "blue",
-        name: "TypeScript"
-      },
-      {
-        color: "orange",
-        name: "Kotlin"
-      }
-    ],
-    gitstats: [
-      {
-        icon: <GitHub />,
-        text: "personal-site-v2"
-      },
-      {
-        icon: <GitCommit />,
-        text: "524 Commits"
-      },
-      {
-        icon: <GitMerge />,
-        text: "15 Merges"
-      },
-      {
-        icon: <GitPullRequest />,
-        text: "5 Pull Requests"
-      },
-      {
-        icon: <GitBranch />,
-        text: "1 Branch"
-      }
-    ],
-    social: [
-      {
-        href: "https://gihtub.com/ProSavage/personal-site-v2",
-        name: "GitHub"
-      },
-      {
-        href: "https://youtube.com",
-        name: "YouTube"
-      }
-    ]
-  })
-
+  if (data === null) return <></>
 
   return <Container>
-    <Header>{info.project}</Header>
+    <Header>{data.project}</Header>
     <PreviewStatsContainer>
-      <Preview src="/img/projects/personal-site-v2/preview.png" alt="" />
+      <Preview src={`/img/projects/${props.project}/preview.png`} alt="" />
       <StatsContainer>
-        {info.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
+        {data.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
       </StatsContainer>
     </PreviewStatsContainer>
     <TagContainer>
-      {info.tags.map(tag => <TagButton key={tag}>{tag}</TagButton>)}
+      {data.tags.map(tag => <TagButton key={tag}>{tag}</TagButton>)}
     </TagContainer>
     <LanguagesContainer>
-      {info.langs.map(lang =>
+      {data.langs.map(lang =>
         <LangWrapper key={lang.name}>
           <LangDot style={{ background: lang.color }} />
           <LangText>{lang.name}</LangText>
@@ -92,10 +69,10 @@ function Project() {
       )}
     </LanguagesContainer>
     <Divider>
-      {info.desc}
+      {data.desc}
     </Divider>
     <Divider>
-      {info.social.map(entry =>
+      {data.social.map(entry =>
         <SocialButton key={entry.name}>
           <SocialText>{entry.name}</SocialText>
         </SocialButton>
@@ -175,6 +152,7 @@ const Preview = styled.img`
 
 const Header = styled.p`
   font-size: 25px;
+  text-transform: uppercase;
 `
 
 const TagContainer = styled.div`
@@ -195,11 +173,12 @@ const TagButton = styled.div`
   
   border-radius: 5px;
   
-  width: 75px;
+  padding: 5px;
   
   background: black;
   color: white;
-  margin-right: 10px;
+  margin-right: 5px;
+  text-transform: uppercase;
 `
 
 const SocialText = styled.p`
