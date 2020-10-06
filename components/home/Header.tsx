@@ -37,6 +37,11 @@ const HeaderText = styled.p`
 const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  padding-left: 5px;
+
+  @media(min-width: 1000px) {
+    padding-left: 20px;
+  }
 `
 
 const LessStrong = styled.strong`
