@@ -1,46 +1,107 @@
 import styled from "styled-components";
-import {GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest} from "react-feather";
+import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest } from "react-feather";
+import { useEffect, useState } from "react";
+import Axios from "axios";
 
 interface ProjectProps {
-    project: string,
-    desc: string,
-    tags: string[]
-    langs: {color: string, name: string}[]
-    social: {href: string, name: string}[]
-    gitstats: {icon: React.ReactNode, text: string}[]
+  project: string,
+  desc: string,
+  tags: string[]
+  langs: { color: string, name: string }[]
+  social: { href: string, name: string }[]
+  gitstats: { icon: React.ReactNode, text: string }[]
 }
 
-function Project(props: ProjectProps) {
-    return <Container>
-        <Header>{props.project}</Header>
-        <PreviewStatsContainer>
-            <Preview src="/img/projects/personal-site-v2/preview.png" alt=""/>
-            <StatsContainer>
-                {props.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
-            </StatsContainer>
-        </PreviewStatsContainer>
-        <TagContainer>
-            {props.tags.map(tag => <TagButton key={tag}>{tag}</TagButton>)}
-        </TagContainer>
-        <LanguagesContainer>
-            {props.langs.map(lang =>
-                <LangWrapper key={lang.name}>
-                    <LangDot style={{background: lang.color}}/>
-                    <LangText>{lang.name}</LangText>
-                </LangWrapper>
-            )}
-        </LanguagesContainer>
-        <Divider>
-            {props.desc}
-        </Divider>
-        <Divider>
-            {props.social.map(entry =>
-                <SocialButton key={entry.name}>
-                    <SocialText>{entry.name}</SocialText>
-                </SocialButton>
-            )}
-        </Divider>
-    </Container>
+function Project() {
+
+  useEffect(() => {
+    Axios.get("/api/project")
+  }, [])
+
+  const []
+
+  const [info, setInfo] = useState({
+    project: "PERSONAL-SITE-V2",
+    desc: "This is my personal website that I built to showcase my personal projects & more, with github integration \n" +
+      "to easily show project data.",
+    tags: [
+      "NEXTJS", "REACT", "QUARK"
+    ],
+    langs: [
+      {
+        color: "blue",
+        name: "TypeScript"
+      },
+      {
+        color: "orange",
+        name: "Kotlin"
+      }
+    ],
+    gitstats: [
+      {
+        icon: <GitHub />,
+        text: "personal-site-v2"
+      },
+      {
+        icon: <GitCommit />,
+        text: "524 Commits"
+      },
+      {
+        icon: <GitMerge />,
+        text: "15 Merges"
+      },
+      {
+        icon: <GitPullRequest />,
+        text: "5 Pull Requests"
+      },
+      {
+        icon: <GitBranch />,
+        text: "1 Branch"
+      }
+    ],
+    social: [
+      {
+        href: "https://gihtub.com/ProSavage/personal-site-v2",
+        name: "GitHub"
+      },
+      {
+        href: "https://youtube.com",
+        name: "YouTube"
+      }
+    ]
+  })
+
+
+  return <Container>
+    <Header>{info.project}</Header>
+    <PreviewStatsContainer>
+      <Preview src="/img/projects/personal-site-v2/preview.png" alt="" />
+      <StatsContainer>
+        {info.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
+      </StatsContainer>
+    </PreviewStatsContainer>
+    <TagContainer>
+      {info.tags.map(tag => <TagButton key={tag}>{tag}</TagButton>)}
+    </TagContainer>
+    <LanguagesContainer>
+      {info.langs.map(lang =>
+        <LangWrapper key={lang.name}>
+          <LangDot style={{ background: lang.color }} />
+          <LangText>{lang.name}</LangText>
+        </LangWrapper>
+      )}
+    </LanguagesContainer>
+    <Divider>
+      {info.desc}
+    </Divider>
+    <Divider>
+      {info.social.map(entry =>
+        <SocialButton key={entry.name}>
+          <SocialText>{entry.name}</SocialText>
+        </SocialButton>
+      )}
+    </Divider>
+  </Container>
 }
 
 export default Project;
