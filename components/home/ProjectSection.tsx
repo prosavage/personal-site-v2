@@ -1,12 +1,54 @@
 import styled from "styled-components";
 import Project from "./Project";
-import {GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest} from "react-feather";
+import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest } from "react-feather";
 
 function ProjectSection(props) {
     return <Wrapper>
         <Header>PROJECTS</Header>
         <Container>
-            <Project/>
+            <Project
+                user="SavageLabs"
+                project="store"
+                social={[
+                    {
+                        href: "https://gihtub.com/ProSavage/personal-site-v2",
+                        name: "GitHub"
+                    },
+                    {
+                        href: "https://youtube.com",
+                        name: "YouTube"
+                    }
+                ]}
+            />
+            <Project
+                user="ProSavage"
+                project="personal-site-v2"
+                social={[
+                    {
+                        href: "https://gihtub.com/ProSavage/personal-site-v2",
+                        name: "GitHub"
+                    },
+                    {
+                        href: "https://youtube.com",
+                        name: "YouTube"
+                    }
+                ]}
+            />
+            <Project
+                user="ProSavage"
+                project="ur-a-cutie"
+                social={[
+                    {
+                        href: "https://gihtub.com/ProSavage/personal-site-v2",
+                        name: "GitHub"
+                    },
+                    {
+                        href: "https://youtube.com",
+                        name: "YouTube"
+                    }
+                ]}
+            />
+
         </Container>
     </Wrapper>
 }
