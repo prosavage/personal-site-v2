@@ -26,6 +26,12 @@ const HeaderWrapper = styled.div`
 const HeaderText = styled.p`
   font-size: 90px;
   line-height: 100px;
+
+  @media(max-width: 400px) {
+    flex-direction: column;
+    font-size: 65px;
+    line-height: 65px;
+  }
 `
 
 const TextWrapper = styled.div`

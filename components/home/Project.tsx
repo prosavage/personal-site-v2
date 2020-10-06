@@ -93,18 +93,31 @@ const Container = styled.div`
   border: 2px solid #eaeaea;
   border-radius: 5px;
   max-width: 900px;
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+    max-width: 450px;
+  }
 `
 
 const PreviewStatsContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+  }
 `
 
 const StatsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media(max-width: 1000px) {
+    flex-direction: row;
+  }
 `
 
 const StatsEntry = styled.div`
@@ -112,11 +125,20 @@ const StatsEntry = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 10px;
+
+  @media(max-width: 1000px) {
+    flex-direction: column;
+    padding: 5px 10px;
+  }
 `
 
 const StatText = styled.p`
   font-size: 15px;
   padding-left: 5px;
+
+  @media(max-width: 1000px) {
+    text-align: center;
+  }
 `
 
 
@@ -148,6 +170,11 @@ const Preview = styled.img`
   width: 640px;
   border: 2px solid black;
   border-radius: 5px;
+
+  @media(max-width: 1000px) {
+    height: 180px;
+    width: 320px;
+  }
 `
 
 const Header = styled.p`
