@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
     auth: {
       username: 'ProSavage',
-      password: ''
+      password: process.env.GITHUB_TOKEN!!
     }
   })
   const projectName = req.body.name;
