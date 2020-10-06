@@ -63,7 +63,8 @@ const Wrapper = styled.div`
   left: 0;
   z-index: 1;
   
-  background: ${(props: PropsTheme) => props.theme.background};
+  /* background: ${(props: PropsTheme) => props.theme.background}; */
+  background: transparent;
   backdrop-filter: blur(5px);
   
   padding: 10px;
