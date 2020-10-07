@@ -1,52 +1,42 @@
 import styled from "styled-components";
 import Project from "./Project";
 import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest } from "react-feather";
+import Carousel from "./Carousel";
 
 function ProjectSection(props) {
+
+    const social = [
+        {
+            href: "https://gihtub.com/ProSavage/personal-site-v2",
+            name: "GitHub"
+        },
+        {
+            href: "https://youtube.com",
+            name: "YouTube"
+        }
+    ]
     return <Wrapper>
         <Header>PROJECTS</Header>
         <Container>
             <Project
                 user="SavageLabs"
                 project="store"
-                social={[
-                    {
-                        href: "https://gihtub.com/ProSavage/personal-site-v2",
-                        name: "GitHub"
-                    },
-                    {
-                        href: "https://youtube.com",
-                        name: "YouTube"
-                    }
-                ]}
+                social={social}
             />
             <Project
                 user="ProSavage"
                 project="personal-site-v2"
-                social={[
-                    {
-                        href: "https://gihtub.com/ProSavage/personal-site-v2",
-                        name: "GitHub"
-                    },
-                    {
-                        href: "https://youtube.com",
-                        name: "YouTube"
-                    }
-                ]}
+                social={social}
             />
             <Project
                 user="ProSavage"
                 project="ur-a-cutie"
-                social={[
-                    {
-                        href: "https://gihtub.com/ProSavage/personal-site-v2",
-                        name: "GitHub"
-                    },
-                    {
-                        href: "https://youtube.com",
-                        name: "YouTube"
-                    }
-                ]}
+                social={social}
+            />
+            <Project
+                user="notesets"
+                project="coming-soon"
+                social={social}
             />
 
         </Container>

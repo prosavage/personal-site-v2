@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { GitBranch, GitCommit, GitHub, GitMerge, GitPullRequest, X, XCircle } from "react-feather";
 import { useEffect, useState } from "react";
 import Axios from "axios";
+import { useRouter } from "next/router";
 
 interface ProjectProps {
   project: string,
@@ -16,12 +17,14 @@ function Project(props: ProjectProps) {
       name: props.project,
       user: props.user,
     }).then(res => {
+
       const data = res.data;
       setData({
         project: data.project,
         desc: data.desc,
         tags: data.topics,
         langs: data.lang,
+        homepage: data.homepage,
         gitstats: [
           {
             icon: <GitHub />,
@@ -32,11 +35,11 @@ function Project(props: ProjectProps) {
             text: `${data.commits} Commits`
           },
           {
-            icon: <GitBranch/>,
+            icon: <GitBranch />,
             text: `${data.forks} Forks`
           },
           {
-            icon: <XCircle/>,
+            icon: <XCircle />,
             text: `${data.issues} Issues`
           }
         ],
@@ -46,13 +49,14 @@ function Project(props: ProjectProps) {
   }, [])
 
   const [data, setData] = useState(null);
+  const router = useRouter();
 
   if (data === null) return <></>
 
   return <Container>
     <Header>{data.project}</Header>
     <PreviewStatsContainer>
-      <Preview src={`/img/projects/${props.project}/preview.png`} alt="" />
+      <Preview onClick={() => router.push(data.homepage)} src={`/img/projects/${props.project}/preview.png`} alt="project preview" />
       <StatsContainer>
         {data.gitstats.map(stat => <StatsEntry key={stat.text}>{stat.icon} <StatText>{stat.text}</StatText></StatsEntry>)}
       </StatsContainer>
@@ -170,6 +174,7 @@ const Preview = styled.img`
   width: 640px;
   border: 2px solid black;
   border-radius: 5px;
+  cursor: pointer;
 
   @media(max-width: 1000px) {
     height: 180px;

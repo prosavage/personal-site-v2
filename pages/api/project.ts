@@ -31,8 +31,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const forks = data.forks;
   const issues = data.open_issues;
   const topics = data.topics;
+  const homepage = data.homepage;
 
 
-
-  res.status(200).json({ project: name, desc, lang, commits, topics, forks, issues });
+  res.status(200).json({ project: name, desc, lang, commits, topics, forks, issues, homepage });
 };
