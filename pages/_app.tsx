@@ -13,14 +13,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <script
-          async
-          defer
-          src="https://scripts.simpleanalyticscdn.com/latest.js"
-        ></script>
-        <noscript>
-          <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" />
-        </noscript>
+       <title>ProSavage</title>
       </Head>
       <Wrapper>
         <ContentContainer>
@@ -29,6 +22,14 @@ function MyApp({ Component, pageProps }) {
           </ThemeToggleContext.Provider>
         </ContentContainer>
       </Wrapper>
+      <script
+          async
+          defer
+          src="https://scripts.simpleanalyticscdn.com/latest.js"
+        ></script>
+        <noscript>
+          <img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" />
+        </noscript>
     </>
   );
 }
