@@ -6,7 +6,10 @@ import langColors from "./../../lib/lang-colors.json"
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const axios = Axios.create({
     headers: {
-      Accept: "application/vnd.github.mercy-preview+json"
+      Accept: "application/vnd.github.mercy-preview+json",
+      "Cache-Control": "no-cache",
+      'Pragma': 'no-cache',
+      'Expires': '0',
     },
     auth: {
       username: 'ProSavage',
@@ -32,7 +35,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const issues = data.open_issues;
   const topics = data.topics;
   const homepage = data.homepage;
-
 
   res.status(200).json({ project: name, desc, lang, commits, topics, forks, issues, homepage });
 };
