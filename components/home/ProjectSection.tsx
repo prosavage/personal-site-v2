@@ -5,38 +5,33 @@ import Carousel from "./Carousel";
 
 function ProjectSection(props) {
 
-    const social = [
-        {
-            href: "https://gihtub.com/ProSavage/personal-site-v2",
-            name: "GitHub"
-        },
-        {
-            href: "https://youtube.com",
-            name: "YouTube"
-        }
-    ]
+   
     return <Wrapper>
         <Header>PROJECTS</Header>
         <Container>
             <Project
+                key={"store"}
                 user="SavageLabs"
                 project="store"
-                social={social}
+                social={[]}
             />
             <Project
+                key={"personal-site-v2"}
                 user="ProSavage"
                 project="personal-site-v2"
-                social={social}
+                social={[]}
             />
             <Project
-                user="ProSavage"
-                project="ur-a-cutie"
-                social={social}
+                key={"next-js-template"}
+                user={"ProSavage"}
+                project={"next-js-template"}
+                social={[]}
             />
             <Project
+                key={"coming-soon"}
                 user="notesets"
                 project="coming-soon"
-                social={social}
+                social={[]}
             />
 
         </Container>

@@ -1,6 +1,5 @@
 import { time } from "console";
 import { ReactNode, useEffect, useState } from "react"
-import { Sliders } from "react-feather";
 
 interface CarouselProps {
     slides: ReactNode[];

@@ -1,12 +1,7 @@
 import { useRouter } from 'next/router'
-import { SyntheticEvent, useContext } from 'react';
-import { ThemeContext } from "styled-components";
-import ITheme from '../styles/theme/ITheme';
 import styled from "styled-components";
 
 function ActiveLink({ children, href }) {
-
-    const themeContext: ITheme = useContext(ThemeContext);
 
     const router = useRouter()
     const style = {
