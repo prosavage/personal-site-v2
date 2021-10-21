@@ -10,6 +10,12 @@ function ProjectSection(props) {
         <Header>PROJECTS</Header>
         <Container>
             <Project
+                key={"enigmapool"}
+                user={"ProSavage"}
+                project={"enigmapool"}
+                social={[]}
+            />
+            <Project
                 key={"store"}
                 user="SavageLabs"
                 project="store"

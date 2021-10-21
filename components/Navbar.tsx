@@ -23,7 +23,7 @@ function Navbar(props) {
     },
     {
       name: "Blog",
-      href: "https://blog.prosavage.net",
+      href: "/blog",
     },
   ];
 

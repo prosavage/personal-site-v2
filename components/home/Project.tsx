@@ -23,6 +23,7 @@ function Project(props: ProjectProps) {
       user: props.user,
     }).then((res) => {
       const data = res.data;
+      console.log(data)
       setData({
         project: data.project,
         desc: data.desc,
@@ -34,10 +35,10 @@ function Project(props: ProjectProps) {
             icon: <GitHub />,
             text: data.project,
           },
-          {
-            icon: <GitCommit />,
-            text: `${data.commits} Commits`,
-          },
+          // {
+          //   icon: <GitCommit />,
+          //   text: `${data.commits} Commits`,
+          // },
           {
             icon: <GitBranch />,
             text: `${data.forks} Forks`,

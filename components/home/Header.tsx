@@ -2,16 +2,16 @@ import styled from "styled-components";
 import Link from "next/link";
 
 function Header(props) {
-    return <HeaderWrapper>
-        <TextWrapper>
-            <HeaderText>
-                Hi, I'm <CrossThrough><LessStrong>Naman Gupta</LessStrong>,
-                <br/>a.k.a</CrossThrough> <LessStrong>ProSavage</LessStrong>
-            </HeaderText>
-            <p>Owner of <strong><ClickableLink
-                href={"https://savagelabs.net"}>SavageLabs</ClickableLink></strong></p>
-        </TextWrapper>
-    </HeaderWrapper>
+  return <HeaderWrapper>
+    <TextWrapper>
+      <HeaderText>
+        Hi, I'm <CrossThrough><LessStrong>Naman Gupta</LessStrong>,
+          <br />a.k.a</CrossThrough> <LessStrong>ProSavage</LessStrong>
+      </HeaderText>
+      <p>Owner of <strong><ClickableLink
+        href={"https://enigmapool.com"}>EnigmaPool</ClickableLink></strong></p>
+    </TextWrapper>
+  </HeaderWrapper>
 }
 
 export default Header;
