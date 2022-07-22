@@ -166,6 +166,7 @@ const StatText = styled.p`
 const LanguagesContainer = styled.div`
   display: flex;
   padding: 10px 0;
+  flex-wrap: wrap;
 `;
 
 const LangText = styled.p`
