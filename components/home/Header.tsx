@@ -8,7 +8,7 @@ function Header(props) {
         Hi, I'm <CrossThrough><LessStrong>Naman Gupta</LessStrong>,
           <br />a.k.a</CrossThrough> <LessStrong>ProSavage</LessStrong>
       </HeaderText>
-      <p>Owner of <strong><ClickableLink
+      <p>Owner/Creator of <strong><ClickableLink
         href={"https://enigmapool.com"}>EnigmaPool</ClickableLink></strong></p>
     </TextWrapper>
   </HeaderWrapper>

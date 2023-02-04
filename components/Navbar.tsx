@@ -17,14 +17,6 @@ function Navbar(props) {
       name: "GitHub",
       href: "https://github.com/ProSavage",
     },
-    {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/prosavage/",
-    },
-    {
-      name: "Blog",
-      href: "/blog",
-    },
   ];
 
   const getLogoPath = () => {
@@ -93,6 +85,7 @@ const Logo = styled.img`
 
 const LinkWrapper = styled.div`
   padding: 0 10px;
+  /* font-size: 1.2em; */
 `;
 
 const ClickableThemeContainer = styled.div`
